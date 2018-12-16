@@ -83,7 +83,7 @@ public class Generator {
                 }else{
                     cantContaminacion = (int) (randBetween(0,20)*(13-day.getMonthValue()));
                 }
-                cantHospitalizados_hour = (int)randBetween((int)(cantHospitalizados_year/(365*24) + cantContaminacion/randBetween(15,7)) - randBetween(0,12),(int)((cantHospitalizados_year/(365*24) + (cantContaminacion)/randBetween(2,6))) - randBetween(0,12))/24;
+                cantHospitalizados_hour = (int)randBetween((int)(cantHospitalizados_year/(365*24) + cantContaminacion/randBetween(5,9)) - randBetween(0,9),(int)((cantHospitalizados_year/(365*24) + (cantContaminacion)/randBetween(2,4))) - randBetween(0,9))/3;
                 contaminacion = Integer.toString(cantContaminacion);
                 hospitalizados = Integer.toString(cantHospitalizados_hour);
                 data = fecha + ";" + contaminacion + ";"  + hospitalizados;
@@ -106,30 +106,4 @@ public class Generator {
         return totalDates;
     }
     
-    private double[] fragmentarHospitalizados(int cantHosp){
-        double[] cantHospitalizados_month = new double[12];
-        for(int z=0; z<12;z++){
-            int lambda = (int)(cantHosp/2);
-            int delta = randBetween(-500,1000);
-            double m;
-            double auxHospitalizados;
-            if(z<6){
-                m = 6/(lambda+delta);
-                auxHospitalizados = m*z + randBetween(-100,150);
-                cantHospitalizados_month[z] = auxHospitalizados;
-            }else if(z==6){
-                m = 6.5/(((lambda*2)/3)+delta);
-                auxHospitalizados = m*z + randBetween(-30,300);
-                cantHospitalizados_month[z] = auxHospitalizados;
-            }else{
-                m = 6/(lambda+delta);
-                auxHospitalizados = -m*z + randBetween(-100,150);
-                cantHospitalizados_month[z] = auxHospitalizados;
-            }
-        }
-        return cantHospitalizados_month;
-    }
-    
-    //Funcion que genere cantidades de contaminacion por frecuencia.
-    //Funcion que genere ua cantidad de hospitalizados aleatorio por dia.
 }
