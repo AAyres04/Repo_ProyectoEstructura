@@ -17,3 +17,9 @@ Como entrada al programa, se utiliza la cantidad de contaminantes en el aire jun
 Los Datos ingresados tienen el formato YYYY-MM-DD hh:mm CONT HOS, donde YYYY es el año en que se tomó la muestra, MM es el mes de la muestra, DD es el día de la muestra, hh es la hora de la muestra y mm es el minuto de la muestra. Ademas, CONT es la cantidad de material particulad 2.5 presente en el aire al tomar la muestra y HOS es la cantidad de hospitalizados (por causas respiratorias) acumulados en ese dia, hasta el momento de la muestra.
 
 # Reproduccion del Proyecto
+
+Descargar IDE versión EE
+Descargar Código Github
+Cambiar ruta de archivo csv en el modelo
+Configurar algún server (Tomcat o Glassfish de preferencia)
+
