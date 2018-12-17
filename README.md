@@ -4,8 +4,8 @@
 Estructuras de Datos
 
 # Nombres:
-Antonio Ayres
-Christian Herrera
+Antonio Ayres, 
+Christian Herrera, 
 Macelo Bustos
 
 # Problema a Resolver:
