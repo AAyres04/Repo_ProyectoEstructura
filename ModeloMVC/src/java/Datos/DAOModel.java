@@ -4,6 +4,8 @@ import Modelo.BubbleDataModel;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,7 +23,7 @@ public class DAOModel {
         
         int mp;
         int hosp;
-        Date fecha;
+        LocalDate fecha;
         
         for (String lectura : datos) {
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -30,7 +32,7 @@ public class DAOModel {
             mp_string = split[1];
             hosp_string = split[2];
             
-            fecha = formatter.parse(fecha_string);
+            fecha = formatter.parse(fecha_string).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             mp = Integer.parseInt(mp_string);
             hosp = Integer.parseInt(hosp_string);
             BubbleDataModel bdm = new BubbleDataModel(fecha,mp,hosp);

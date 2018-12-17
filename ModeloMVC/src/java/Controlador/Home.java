@@ -41,7 +41,7 @@ public class Home extends HttpServlet {
         ArrayList<BubbleDataModel> bubble = null;
        
         try {
-            bubble = d.loadData("datosPreliminares.csv");
+            bubble = d.loadData("data.csv");
         } catch (ParseException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,24 +5,23 @@
  */
 package Modelo;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 /**
  *
  * @author tonio
  */
 public class BubbleDataModel {
-    private Date fecha;
+    private LocalDate fecha;
     private int mp;
     private int hospitalizados;
 
-    public BubbleDataModel(Date fecha, int mp, int hospitalizados) {
+    public BubbleDataModel(LocalDate fecha, int mp, int hospitalizados) {
         this.fecha = fecha;
         this.mp = mp;
         this.hospitalizados = hospitalizados;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
@@ -34,7 +33,7 @@ public class BubbleDataModel {
         return hospitalizados;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -44,6 +43,11 @@ public class BubbleDataModel {
 
     public void setHospitalizados(int hospitalizados) {
         this.hospitalizados = hospitalizados;
+    }
+    
+    @Override
+    public String toString(){
+        return this.fecha + " " + this.mp+ " " + this.hospitalizados ;
     }
     
 }

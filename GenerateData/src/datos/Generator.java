@@ -25,24 +25,11 @@ import java.util.stream.LongStream;
  */
 public class Generator {
 
-    public static final int HOURS_OF_DAY = 24;
-    /*public String generate() {
-        Random rnd = new Random();
-        return plateNumberGenerator() + ";"
-                + (1 + rnd.nextInt(2)) + ";" + stringRandomizer() + ";"
-                + kmGenerator() + ";" + datesGenerator() + ";"
-                + (rnd.nextInt(3) + 1);
-    }*/
-
+    
+    
     public int randBetween(int start, int end) {
         return start + (int) Math.round(Math.random() * (end - start));
     }
-
-   
-    
-    
-    //Funcion que genere fechas aleatorias en el rango de 2015 a 2018, o un reporte diario para mayor precision.
-    
     
     public LinkedList<String> generateData(){
         LocalDate day;
@@ -53,9 +40,9 @@ public class Generator {
         String data;
         
         int cantHospitalizados_year = 0;
-        double[] cantHospitalizados_month;
+        
         int cantHospitalizados_day = 0;
-        int cantHospitalizados_hour = 0;
+        
         int lastDateYear = 0;
         int cantContaminacion;
         
@@ -71,24 +58,26 @@ public class Generator {
                 //cantHospitalizados_month = fragmentarHospitalizados(cantHospitalizados_year);
             }
             
-            for(int t = 0; t<HOURS_OF_DAY;t++){
-                if(t<10){
-                    hour = "0" + t + ":00";
-                }else{
-                    hour = t + ":00";
-                }
-                fecha = day.toString() + " " +  hour;
-                if(day.getMonthValue()<7){
-                    cantContaminacion = (int) (randBetween(0,20)*day.getMonthValue());
-                }else{
-                    cantContaminacion = (int) (randBetween(0,20)*(13-day.getMonthValue()));
-                }
-                cantHospitalizados_hour = (int)randBetween((int)(cantHospitalizados_year/(365*24) + cantContaminacion/randBetween(5,9)) - randBetween(0,9),(int)((cantHospitalizados_year/(365*24) + (cantContaminacion)/randBetween(2,4))) - randBetween(0,9))/3;
-                contaminacion = Integer.toString(cantContaminacion);
-                hospitalizados = Integer.toString(cantHospitalizados_hour);
-                data = fecha + ";" + contaminacion + ";"  + hospitalizados;
-                allData.add(data + "\n");
+            
+               
+            fecha = day.toString();
+            if(day.getMonthValue()<7){
+                cantContaminacion = (int) (randBetween(0,20)*day.getMonthValue());
+            }else{
+                cantContaminacion = (int) (randBetween(0,20)*(13-day.getMonthValue()));
             }
+            //cantHospitalizados_day = (int)randBetween((int)(cantHospitalizados_year*(cantContaminacion/randBetween(5,9))/(365)) - randBetween(30,90),(cantHospitalizados_year*(cantContaminacion/randBetween(2,4))/(365)) - randBetween(30,90))/3;
+            
+            if(cantContaminacion < 50){
+                cantHospitalizados_day = (int)randBetween((cantHospitalizados_year/365)-cantContaminacion*randBetween(5,8),(cantHospitalizados_year/365)-cantContaminacion*4);
+            }else{
+                cantHospitalizados_day = (int)randBetween((cantHospitalizados_year/365),(cantHospitalizados_year/365)+cantContaminacion/randBetween(2,4));
+            }
+            contaminacion = Integer.toString(cantContaminacion);
+            hospitalizados = Integer.toString(cantHospitalizados_day);
+            data = fecha + ";" + contaminacion + ";"  + hospitalizados;
+            allData.add(data + "\n");
+            
             lastDateYear = day.getYear();
         }
         
